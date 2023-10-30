@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Taş, Kağıt, Makas Oyunu</title>
+</head>
+<body>
+    <h1>Taş, Kağıt, Makas Oyunu</h1>
+    <p>Seç: Taş, Kağıt veya Makas.</p>
+    <button onclick="oyun('tas')">Taş</button>
+    <button onclick="oyun('kagit')">Kağıt</button>
+    <button onclick="oyun('makas')">Makas</button>
+    <div id="sonuc"></div>
+
+    <script>
+        function oyun(oyuncuSecimi) {
+            var secenekler = ["tas", "kagit", "makas"];
+            var bilgisayarSecimi = secenekler[Math.floor(Math.random() * 3)];
+
+            var sonuc = "";
+
+            if (oyuncuSecimi === bilgisayarSecimi) {
+                sonuc = "Berabere!";
+            } else if (
+                (oyuncuSecimi === "tas" && bilgisayarSecimi === "makas") ||
+                (oyuncuSecimi === "kagit" && bilgisayarSecimi === "tas") ||
+                (oyuncuSecimi === "makas" && bilgisayarSecimi === "kagit")
+            ) {
+                sonuc = "Kazandınız!";
+            } else {
+                sonuc = "Bilgisayar Kazandı!";
+            }
+
+            document.getElementById("sonuc").innerHTML = `Siz ${oyuncuSecimi} seçtiniz, bilgisayar ${bilgisayarSecimi} seçti. ${sonuc}`;
+        }
+    </script>
+</body>
+</html>
